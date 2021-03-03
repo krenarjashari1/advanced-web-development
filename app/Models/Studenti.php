@@ -15,9 +15,9 @@ class Studenti
    public function __construct($id, $fullName, $birthdate, $gender)
    {
 
-       $this->$id=$id;
-       $this->$fullName=$fullName;
-       $this->$birthdate=$birthdate;
+       $this->id=$id;
+       $this->fullName=$fullName;
+       $this->birthdate=$birthdate;
        $this->gender=$gender;
 
    }
@@ -31,6 +31,11 @@ class Studenti
    }
 
    public function getBirthdate(){
+       return $this->birthdate;
+   }
+
+   public function getGender(){
+
        return $this->gender;
    }
 

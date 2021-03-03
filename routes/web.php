@@ -18,6 +18,22 @@ Route::get('/', function () {
 });
 
 
+Route::get('/studenti', function (){
+
+    $studenti = new \App\Models\Studenti("3","Ee","rrr","hhrhr");
+
+
+    //dd($studenti);
+
+
+
+    return view('studenti',[
+
+        "studenti"=>$studenti
+    ]);
+
+});
+
 
 
 
