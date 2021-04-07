@@ -25,18 +25,14 @@
                     </form>
                 @endslot
 
-                    @slot('edit')
+                  @slot('edit')
 
-                        <form method="POST" action="{{route('editGymMembers',$gymMember->getId())}}">
+                      <form action="{{route('editGymMembers',$gymMember->getId())}}">
 
-                            @method('POST')
-                            @csrf
+                          <button>Edit</button>
+                      </form>
 
-                            <button>Edit</button>
-                        </form>
-
-
-                @endslot
+                      @endslot
 
 
 
