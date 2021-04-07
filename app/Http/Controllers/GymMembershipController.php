@@ -8,15 +8,11 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 
 class GymMembershipController extends Controller
-{
-    public function gymMember(){
-        $gymMember = new GymMembership("2", "<b>Filane2 Fisteku</b>",
-            "18.10.1900", "F");
 
-        return view('gymMembership', [
-            "gymMember" => $gymMember
-        ]);
-    }
+
+{
+
+
 
     public function createNewGymMember(Request $request){
 
@@ -34,7 +30,6 @@ class GymMembershipController extends Controller
         $newMember->birthdate = $request->birthdate;
         $newMember->expireDate = $request->expireDate;
 
-
         $newMember->profile_picture = $path;
         $newMember->is_active = true;
 
@@ -43,12 +38,18 @@ class GymMembershipController extends Controller
         return redirect()->route('gym.membership');
     }
 
+    public function addNewMember(){
+        return view('gymMembership');
+    }
 
 
-    public function addProfilePicture(Request $request, $id){
-        $student = Student::find($id);
 
-        if(!$student){
+
+
+    public function addProfilePicture(Request $request, $first_name){
+        $newMember = GymMembership::find($first_name);
+
+        if(!$newMember){
             return abort(404);
         }
 
@@ -60,9 +61,9 @@ class GymMembershipController extends Controller
             $path = str_replace("public/", 'storage/', $path);
         }
 
-        $student->profile_picture=$path;
-        $student->save();
-        return redirect(route('show.student', $id));
+        $newMember->profile_picture=$path;
+        $newMember->save();
+        return redirect(route('show.student', $newMember));
     }
 
 }

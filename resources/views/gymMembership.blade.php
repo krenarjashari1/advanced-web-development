@@ -1,5 +1,4 @@
 
-
 @section('content')
     <table border="1">
 
@@ -41,11 +40,11 @@
             @slot('rowColor', 'green')
             @slot('attributeName','Profile Picture')
             @slot('value')
-                @if($gymMember->getProfilePicture() != null)
+                @if($newMember->getProfilePicture() != null)
                     <img width=100
-                         src='{{url(str_replace("public/", 'storage/', $gymMember->getProfilePicture()))}}'>
+                         src='{{url(str_replace("public/", 'storage/', $newMember->getProfilePicture()))}}'>
                 @else
-                    <form method="POST" enctype="multipart/form-data" action="{{route('add.profile.picture', $gymMember->getId())}}">
+                    <form method="POST" enctype="multipart/form-data" action="{{route('add.profile.picture', $newMember->getId())}}">
                         @method('PUT')
                         @csrf
                         <input type="file" name="profile_picture">
