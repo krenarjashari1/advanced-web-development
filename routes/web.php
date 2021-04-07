@@ -23,7 +23,11 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/gymMembership', 'App\Http\Controllers\GymMembershipController@createNewGymMember')->name("gym.membership");
-Route::get('/gymMembership', 'App\Http\Controllers\GymMembershipController@addNewMember')->name("addNewMember");
-Route::put('/add-profile-picture/{id}', 'App\Http\Controllers\GymMembershipController@addProfilePicture')->name('add.profile.picture');
-Route::post('/gymMembership', 'App\Http\Controllers\ViewAllGymMembers@viewAllGymMembers')->name("view.members");
+Route::post('/gymMembership', 'App\Http\Controllers\GymMembershipController@createNewGymMember')->name('gym.membership');
+Route::get('/addGymMember', function (){
+    return view('addGymMember');
+})->name('addGymMember');
+
+Route::get('/viewGymMembers', function (){
+    return view('viewGymMembers');
+})->name('viewGymMembers');

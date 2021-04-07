@@ -7,10 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class GymMembership extends Model
 {
+
+    public $table ="gymMembers";
     use HasFactory;
 
 
 
+
+    public function getId(){
+        return $this->id;
+    }
     public function getFirstName(){
         return $this->first_name;
     }
