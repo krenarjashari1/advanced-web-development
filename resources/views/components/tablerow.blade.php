@@ -1,4 +1,3 @@
 <tr>
-    <th style="color: {{$rowColor ?? 'black'}}">{{$attributeName}}:</th>
-    <td>{!!  $value !!}</td>
+    <td>{{$id}} {{$first_name}} {{$last_name}} {{$birthdate}} {{$expireDate}} </td>
 </tr>
