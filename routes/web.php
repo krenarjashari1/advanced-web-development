@@ -34,3 +34,4 @@ Route::get('/viewGymMembers', function (){
 
 
 Route::delete('/deleteGymMembers/{id}','App\Http\Controllers\GymMembershipController@deleteGymMember' )->name('deleteGymMembers');
+Route::post('/editGymMembers/{id}','App\Http\Controllers\GymMembershipController@editGymMember' )->name('editGymMembers');

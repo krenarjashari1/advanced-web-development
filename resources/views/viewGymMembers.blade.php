@@ -23,12 +23,23 @@
 
                         <button>Delete</button>
                     </form>
+                @endslot
+
+                    @slot('edit')
+
+                        <form method="POST" action="{{route('editGymMembers',$gymMember->getId())}}">
+
+                            @method('POST')
+                            @csrf
+
+                            <button>Edit</button>
+                        </form>
+
+
+                @endslot
 
 
 
-
-
-                    @endslot
 
 
             @endcomponent

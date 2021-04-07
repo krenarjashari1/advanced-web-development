@@ -28,6 +28,19 @@ class GymMembershipController extends Controller
     }
 
 
+
+
+
+        public function editGymMember(Request $request, $id)
+        {
+            GymMembership::where('id', $id)->update($request->all());
+            return redirect('/addGymMember');
+        }
+
+
+
+
+
     public function deleteGymMember($id){
 
         $gymMembers=GymMembership::find($id);
