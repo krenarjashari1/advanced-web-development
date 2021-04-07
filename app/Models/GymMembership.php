@@ -12,6 +12,7 @@ class GymMembership extends Model
     private $id;
     private $fullName;
     private $birthdate;
+    private $expireDate;
     private $gender;
 
     public function __construct($id, $fullName, $birthdate, $gender)

@@ -48,22 +48,31 @@
                     <form method="POST" enctype="multipart/form-data" action="{{route('add.profile.picture', $gymMember->getId())}}">
                         @method('PUT')
                         @csrf
-                        <input type="file" name="profile_picture"><br>
+                        <input type="file" name="profile_picture">
                         <button>Add Profile Picture</button>
                     </form>
                 @endif
             @endslot
         @endcomponent
 
+            @component('components.tablerow')
+                @slot('rowColor', 'green')
+                @slot('attributeName','Add Member')
+                @slot('value')
+                    <button type="button">Save</button>
+                @endslot
+            @endcomponent
 
-        @component('components.tablerow')
-            @slot
-
-                <button type="button" method="Post" action="{{route('')}}">Add Member</button>
+            @component('components.tablerow')
 
 
-            @endslot
-        @endcomponent
+
+
+
+
+
+
+
 {{--            @slot('attributeName', 'Actions')--}}
 {{--            @slot('value')--}}
 {{--                <form onsubmit="return confirm('Are your sure to delete this student?');"--}}
@@ -76,5 +85,15 @@
 {{--        @endcomponent--}}
     </table>
 
+
+
 @endsection
+
+
+
+
+
+
+
+
 

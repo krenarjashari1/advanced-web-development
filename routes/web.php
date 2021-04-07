@@ -23,6 +23,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/gymMembership', 'App\Http\Controllers\GymMembershipController@gymMember');
+Route::get('/gymMembership', 'App\Http\Controllers\GymMembershipController@gymMember')->name("gym.membership");
 Route::put('/add-profile-picture/{id}', 'App\Http\Controllers\GymMembershipController@addProfilePicture')->name('add.profile.picture');
-Route::get('/view-gymMembers/', 'App\Http\Controllers\StudentiController@showStudents')
+
