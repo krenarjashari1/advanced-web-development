@@ -14,7 +14,21 @@
                 @slot('last_name',$gymMember->getLastName())
                 @slot('birthdate',$gymMember->getBirthdate())
                 @slot('expireDate',$gymMember->getExpireDate())
+                @slot('delete')
 
+                    <form method="POST" action="{{route('deleteGymMembers',$gymMember->getId())}}">
+
+                        @method('DELETE')
+                        @csrf
+
+                        <button>Delete</button>
+                    </form>
+
+
+
+
+
+                    @endslot
 
 
             @endcomponent
