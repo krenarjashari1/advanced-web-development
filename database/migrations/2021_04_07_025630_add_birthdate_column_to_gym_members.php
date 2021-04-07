@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGymMembersTable extends Migration
+class AddBirthdateColumnToGymMembers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateGymMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('gym_members', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-
+        Schema::table('gym_members', function (Blueprint $table) {
+            $table->date("birthdate");
         });
     }
 
@@ -27,10 +25,8 @@ class CreateGymMembersTable extends Migration
      */
     public function down()
     {
-        Schema::create('gym_members', function (Blueprint $table) {
-
-            $table->dropColumn("first_name");
-
+        Schema::table('gym_members', function (Blueprint $table) {
+            $table->drop("birthdate");
         });
     }
 }

@@ -10,29 +10,29 @@ class GymMembership extends Model
     use HasFactory;
 
     private $id;
-    private $fullName;
+    private $firstName;
+    private $lastName;
     private $birthdate;
     private $expireDate;
-    private $gender;
 
-    public function __construct($id, $fullName, $birthdate, $gender)
+
+    public function __construct($id, $fullName, $birthdate, $expireDate)
     {
         $this->id = $id;
         $this->fullName = $fullName;
         $this->birthdate = $birthdate;
-        $this->gender = $gender;
+        $this->expireDate = $expireDate;
     }
 
     public function getId(){
         return $this->id;
     }
 
-    public function getFullName(){
-        return $this->fullName;
+    public function getFirstName(){
+        return $this->firstName;
     }
-
-    public function getGender(){
-        return $this->gender;
+    public function getLastName(){
+        return $this->LastName;
     }
 
     public function getBirthdate(){

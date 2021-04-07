@@ -59,7 +59,12 @@
                 @slot('rowColor', 'green')
                 @slot('attributeName','Add Member')
                 @slot('value')
-                    <button type="button">Save</button>
+                    <form method="POST" enctype="multipart/form-data" action="{{route('view.members')}}">
+                        @method('POST')
+                        @csrf
+                        <input type="submit" value="Save">
+
+                    </form>
                 @endslot
             @endcomponent
 

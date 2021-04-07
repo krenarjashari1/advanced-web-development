@@ -25,4 +25,4 @@ require __DIR__.'/auth.php';
 
 Route::get('/gymMembership', 'App\Http\Controllers\GymMembershipController@gymMember')->name("gym.membership");
 Route::put('/add-profile-picture/{id}', 'App\Http\Controllers\GymMembershipController@addProfilePicture')->name('add.profile.picture');
-
+Route::post('/gymMembership', 'App\Http\Controllers\ViewAllGymMembers@viewAllGymMembers')->name("view.members");

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGymMembersTable extends Migration
+class AddFirstNameColumnToGymMembers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateGymMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('gym_members', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-
+        Schema::table('gym_members', function (Blueprint $table) {
+            $table->string("first_name");
         });
     }
 
@@ -27,10 +25,8 @@ class CreateGymMembersTable extends Migration
      */
     public function down()
     {
-        Schema::create('gym_members', function (Blueprint $table) {
-
+        Schema::table('gym_members', function (Blueprint $table) {
             $table->dropColumn("first_name");
-
         });
     }
 }
