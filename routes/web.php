@@ -24,6 +24,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::post('/gymMembership', 'App\Http\Controllers\GymMembershipController@createNewGymMember')->name('gym.membership');
+
 Route::get('/addGymMember', function (){
     return view('addGymMember');
 })->name('addGymMember');
@@ -34,6 +35,6 @@ Route::get('/viewGymMembers', function (){
 
 
 Route::delete('/deleteGymMembers/{id}','App\Http\Controllers\GymMembershipController@deleteGymMember' )->name('deleteGymMembers');
-Route::post('/editGymMembers','App\Http\Controllers\GymMembershipController@edit' )->name('editGymMembers');
+Route::post('/editGymMembers','App\Http\Controllers\GymMembershipController@editGymMembers' )->name('editGymMembers');
 
 
