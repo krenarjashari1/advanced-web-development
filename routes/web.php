@@ -38,3 +38,4 @@ Route::delete('/deleteGymMembers/{id}','App\Http\Controllers\GymMembershipContro
 Route::post('/editGymMembers','App\Http\Controllers\GymMembershipController@editGymMembers' )->name('editGymMembers');
 
 
+gggg
