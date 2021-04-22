@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +38,8 @@ Route::get('/viewGymMembers', function (){
 Route::delete('/deleteGymMembers/{id}','App\Http\Controllers\GymMembershipController@deleteGymMember' )->name('deleteGymMembers');
 Route::post('/editGymMembers','App\Http\Controllers\GymMembershipController@editGymMembers' )->name('editGymMembers');
 
-
+Route::prefix('mail')->group(function (){
+    Route::get('/',[MailController::class, 'index'])->name('mail.index');
+    Route::post('/',[MailController::class,'sendMail'])->name('mail.sendMail');
+});
 
