@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,9 +19,13 @@ class CreateNewFile implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+
+    private $filePath;
+
+
+    public function __construct($filePath)
     {
-        //
+        $this->filePath=$filePath;
     }
 
     /**
@@ -30,6 +35,8 @@ class CreateNewFile implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $dummyText="Dummy Text for Job Queue. Current Date Time: ".Carbon::now()->toString();
+        file_put_contents($this->filePath, $dummyText);
     }
 }
+
