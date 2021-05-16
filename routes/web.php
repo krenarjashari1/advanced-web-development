@@ -38,12 +38,14 @@ Route::get('/viewGymMembers', function (){
 Route::delete('/deleteGymMembers/{id}','App\Http\Controllers\GymMembershipController@deleteGymMember' )->name('deleteGymMembers');
 Route::post('/editGymMembers','App\Http\Controllers\GymMembershipController@editGymMembers' )->name('editGymMembers');
 
+
+
+Route::get('/dispatch-queue/{delayMinute}',[\App\Http\Controllers\GymMembershipController::class,'startQueue']);
+
+Route::get('/send-email/{delaySeconds}',[\App\Http\Controllers\GymMembershipController::class, 'sendEmail']);
+
 Route::prefix('mail')->group(function (){
     Route::get('/',[MailController::class, 'index'])->name('mail.index');
     Route::post('/',[MailController::class,'sendMail'])->name('mail.sendMail');
     Route::get('/send-html/{name}/{email}',[MailController::class,'sendHtmlMail'])->name('mail.send-hmtl');
 });
-
-Route::get('/dispatch-queue/{delayMinute}',[\App\Http\Controllers\GymMembershipController::class,'startQueue']);
-
-Route::get('/send-email/',[\App\Http\Controllers\GymMembershipController::class, 'sendEmail']);

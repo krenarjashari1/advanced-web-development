@@ -55,9 +55,11 @@ class GymMembershipController extends Controller
 
     }
 
-    public function sendEmail(){
+    public function sendEmail($delaySeconds){
 
-        SendMail::dispatch("test@email.com", "Tung!");
+        SendMail::dispatch("test@email.com", "Tung!")
+
+        ->delay(now()->addSeconds($delaySeconds))->onQueue('emails');
 
     }
 

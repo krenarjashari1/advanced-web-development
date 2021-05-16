@@ -28,7 +28,7 @@ class MailController extends Controller
 
     public function sendHtmlMail($name, $email){
 
-        Mail::to($email)->send(new WelcomeMail($name));
+        Mail::to($email)->queue(new WelcomeMail($name));
 
 
     }
