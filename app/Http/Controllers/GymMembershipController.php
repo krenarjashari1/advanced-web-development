@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\CreateNewFile;
+use App\Jobs\SendMail;
 use App\Models\GymMembership;
 use App\Models\OldStudenti;
 use App\Models\Student;
@@ -51,6 +52,12 @@ class GymMembershipController extends Controller
         CreateNewFile::dispatch(storage_path('/example_'.rand(0,10000).'.txt'))
         ->delay(now()->addMinutes($delayMinute));
 
+
+    }
+
+    public function sendEmail(){
+
+        SendMail::dispatch("test@email.com", "Tung!");
 
     }
 

@@ -2,12 +2,14 @@
 
 namespace App\Jobs;
 
+use http\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class SendMail implements ShouldQueue
 {
@@ -18,9 +20,18 @@ class SendMail implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+
+    private $to;
+    private $content;
+
+
+
+
+    public function __construct( string $to, string  $content)
     {
-        //
+        $this->to=$to;
+        $this->content=$content;
+
     }
 
     /**
@@ -30,6 +41,12 @@ class SendMail implements ShouldQueue
      */
     public function handle()
     {
-        //
+      Mail::send([],[],function (\Illuminate\Mail\Message $message){
+          $message->to($this->to);
+          $message->setBody($this->content);
+          $message->subject("Test from queue");
+      });
+
     }
 }
+

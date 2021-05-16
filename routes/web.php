@@ -45,3 +45,5 @@ Route::prefix('mail')->group(function (){
 });
 
 Route::get('/dispatch-queue/{delayMinute}',[\App\Http\Controllers\GymMembershipController::class,'startQueue']);
+
+Route::get('/send-email/',[\App\Http\Controllers\GymMembershipController::class, 'sendEmail']);
