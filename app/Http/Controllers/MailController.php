@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendMail;
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
@@ -21,6 +23,13 @@ class MailController extends Controller
 
         SendMail::dispatch($request->to,$request->message)
         ->onQueue('emails');
+
+    }
+
+    public function sendHtmlMail($name, $email){
+
+        Mail::to($email)->send(new WelcomeMail($name));
+
 
     }
 }
