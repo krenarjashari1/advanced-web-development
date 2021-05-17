@@ -39,6 +39,8 @@ class GymMembershipController extends Controller
 
         return redirect()->route('viewGymMembers');
 
+
+
     }
 
 

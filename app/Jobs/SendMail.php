@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use http\Env\Request;
 use http\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -44,9 +45,12 @@ class SendMail implements ShouldQueue
       Mail::send([],[],function (\Illuminate\Mail\Message $message){
           $message->to($this->to);
           $message->setBody($this->content);
-          $message->subject("Test from queue");
+          $message->subject("Fivestar Family");
       });
 
     }
+
+
+
 }
 

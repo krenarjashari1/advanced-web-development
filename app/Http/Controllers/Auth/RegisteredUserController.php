@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMail;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -38,11 +39,19 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
+        //SendMail::dispatch($request->get('email','email'))->delay(now()->addSeconds(5));
+
+        SendMail::dispatch($request->get('email'), "Welcome to Fivestar Fitness")
+            ->delay(now()->addMinutes(2));
+
         Auth::login($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]));
+
+
+
 
         event(new Registered($user));
 
