@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\ExpireEmails;
 use App\Jobs\CreateNewFile;
 use App\Jobs\DeleteNotifyEmail;
 use App\Jobs\SendMail;
 use App\Models\GymMembership;
 use App\Models\OldStudenti;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 class GymMembershipController extends Controller
@@ -30,6 +33,22 @@ class GymMembershipController extends Controller
 
         $newMember->profile_picture = $request->profile_picture;
         $newMember->save();
+
+//        Artisan::call(ExpireEmails);
+
+
+//
+//        $expiredate=$newMember->getExpireDate();
+//
+//        $todayDate=Carbon::now()->format('Y-m-d');
+//
+//        if ($todayDate==$expiredate){
+//
+//            $user=Auth::user()->email;
+//            SendMail::dispatch($user,'Membership Expired')->delay(now()->addSeconds(2));
+//
+//        }
+
 
         return redirect()->route('viewGymMembers');
     }
@@ -75,6 +94,12 @@ class GymMembershipController extends Controller
         ->delay(now()->addSeconds($delaySeconds))->onQueue('emails');
 
     }
+
+
+
+
+
+
 
 
 }
