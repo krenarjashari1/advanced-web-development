@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-        //SendMail::dispatch($request->get('email','email'))->delay(now()->addSeconds(5));
+
 
         SendMail::dispatch($request->get('email'), "Welcome to Fivestar Fitness")
             ->delay(now()->addMinutes(2));

@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\CreateNewFile;
+use App\Jobs\DeleteNotifyEmail;
 use App\Jobs\SendMail;
 use App\Models\GymMembership;
 use App\Models\OldStudenti;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GymMembershipController extends Controller
 
 
 {
+
+
 
     public function createNewGymMember(Request $request)
     {
@@ -31,17 +35,24 @@ class GymMembershipController extends Controller
     }
 
 
+
+
     public function deleteGymMember($id)
     {
 
         $gymMembers = GymMembership::find($id);
         $gymMembers->delete();
 
+        $user=Auth::user()->email;
+        DeleteNotifyEmail::dispatch($user,'Membership Canceled');
+
+
         return redirect()->route('viewGymMembers');
 
 
-
     }
+
+
 
 
     public function editGymMembers()
