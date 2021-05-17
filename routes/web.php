@@ -28,11 +28,11 @@ Route::post('/gymMembership', 'App\Http\Controllers\GymMembershipController@crea
 
 Route::get('/addGymMember', function (){
     return view('addGymMember');
-})->name('addGymMember');
+})->middleware(['auth'])->name('addGymMember');
 
 Route::get('/viewGymMembers', function (){
     return view('viewGymMembers');
-})->name('viewGymMembers');
+})->middleware(['auth'])->name('viewGymMembers');
 
 
 Route::delete('/deleteGymMembers/{id}','App\Http\Controllers\GymMembershipController@deleteGymMember' )->name('deleteGymMembers');

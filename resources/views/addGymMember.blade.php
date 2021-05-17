@@ -19,6 +19,7 @@
     <label>Profile Picture:</label><br>
     <input type="file" name="profile_picture" /><br><br>
     <input type="submit"/>
+
 </form>
 </body>
 </html>
